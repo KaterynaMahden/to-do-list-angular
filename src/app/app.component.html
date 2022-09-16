@@ -14,7 +14,10 @@
         <app-item  [item]="item"></app-item>
       </li>
     </div>
-    <router-outlet></router-outlet>
+    <div [@routeAnimations]="router.url">
+      <router-outlet></router-outlet>
+
+    </div>
   </div>
   <div class="btn-div">
     <button [@openClose]="modal ? 'open' : 'closed' " class="btn-primary" routerLink="{{modal ? '/add' : '/'}}">

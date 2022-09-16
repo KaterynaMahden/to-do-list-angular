@@ -10,7 +10,7 @@ import { ItemsService } from "../services/items.service";
   selector: 'app-create-modal',
   templateUrl: './create-new.component.html',
   styleUrls: ['./create-new.component.scss'],
-  animations: [modalAnimation]
+  
 })
 
 export class CreateModalComponent {

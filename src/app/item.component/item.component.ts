@@ -22,7 +22,7 @@ export class ItemComponent {
 
   goToItem() {
     const itemId = this.item.id
-    this.router.navigate(['/edit', {id: itemId}])
+    this.router.navigate(['/edit', itemId])
   }
 
 }

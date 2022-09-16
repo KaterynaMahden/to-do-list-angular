@@ -10,30 +10,6 @@ import { ItemsService } from "../services/items.service";
   selector: 'app-edit-modal',
   templateUrl: './edit-modal.component.html',
   styleUrls: ['./edit-modal.component.scss'],
-  animations: [
-    trigger('openClose', [
-      state('open', style({
-        bottom: '0em',
-        opacity: 1
-      })),
-
-      state('closed', style({
-        opacity: 0
-      })),
-
-      transition('open => closed', [
-        animate('450ms ease-out')
-      ]),
-
-      transition('closed => open', [
-        animate('1000ms ease-in')
-      ]),
-      transition('* => open', [
-        animate('450ms',
-          style({ opacity: '0.8', transform: 'translateY(30%)' }),
-        ),
-      ]),
-    ]),]
 })
 
 export class EditModalComponent implements OnInit {
