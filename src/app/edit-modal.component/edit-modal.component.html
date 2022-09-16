@@ -1,0 +1,16 @@
+<div [@openClose]="open ? 'open' : 'closed' " class="new">
+    <div class="edit-div"
+    >
+    <form [formGroup]="updateItem">
+      <input formControlName="descriptionField" #editedItem type="text" class="sm-text-input" (keyup.enter)="editItem(editedItem.value)">
+    </form>
+      <div class="btn-wrapper">
+        <button (click)="remove()" type="submit" class="btn-warn">
+            Delete
+        </button>
+        <button (click)="editItem(editedItem.value)" class="btn-save">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>

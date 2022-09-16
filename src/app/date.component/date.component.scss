@@ -1,0 +1,19 @@
+.main {
+ display: flex;
+  flex-direction: column;
+}
+.h2 {
+  margin-top: 25px;
+  font-size: 1.6em;
+  opacity: 90%;
+  font-weight: 600;
+  cursor: default;
+}
+
+.h3 {
+  cursor: default;
+  margin-top: 5px;
+  color: #9f9f9f;
+  font-size: 1.3em;
+  opacity: 70%;
+}

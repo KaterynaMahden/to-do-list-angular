@@ -1,0 +1,15 @@
+<div [@modalAnimation]="getRouteAnimationData()" class="create-new">
+            <input
+              #newItem
+              type="text"
+              placeholder="Add a Task here"
+              (keyup.enter)="addNewItem(newItem.value)"
+              class="lg-text-input"
+              id="addItemInput"
+            />
+            <div class="btn-wrapper" >
+              <button class="btn-save" (click)="addNewItem(newItem.value)">
+                SAVE
+              </button>
+            </div>
+</div>

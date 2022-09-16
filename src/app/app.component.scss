@@ -1,0 +1,94 @@
+@import url(//fonts.googleapis.com/css?family=Libre+Baskerville);
+
+.main {
+  display: flex;
+  flex-direction: column;
+  font-family: Libre Baskerville, open-sans;
+  width: 100%;
+  min-height: 900px;
+  background-color: #FAF9F6;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.heading-main {
+  border-bottom: 1px solid rgb(159,159,159, 0.2);
+  height: 110px;
+}
+
+.heading {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #867cf4;
+
+}
+
+.h3 {
+  color: #9f9f9f;
+  font-size: 1.2em;
+  opacity: 70%;
+  cursor: default;
+
+}
+
+.card {
+  border-radius: 5px;
+  box-shadow: 3px 3px 7px #c0c0c0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 330px;
+  height: 600px;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+
+}
+
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.list {
+  padding-top: 30px;
+  height: 370px;
+
+}
+
+li {
+  list-style-type: none;
+  height: 50px;
+  margin-bottom: 30px;
+}
+
+.btn-div {
+  position: absolute;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  bottom: 9em;
+}
+
+.btn-primary {
+  position: absolute;
+  font-family: Libre Baskerville, serif;
+  border-radius: 50%;
+  border: none;
+  color: #fff;
+  height: 58px;
+  width: 58px;
+  font-size: 2.5em;
+  cursor: pointer;
+}
+
+

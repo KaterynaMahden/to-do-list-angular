@@ -1,0 +1,9 @@
+<div class="main">
+  <div class="check-item">
+    <label [for]="item.description">
+    <span (click)="goToItem()"  class="span">{{item.description}}</span>
+      <input class="checkbox" [id]="item.description" type="checkbox" (change)="item.done = !item.done" [checked]="item.done" />
+    </label>
+  </div>
+</div>
+
