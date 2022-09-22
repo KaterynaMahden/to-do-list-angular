@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router, RouterEvent } from '@angular/router';
+import {NavigationEnd, NavigationStart, Router, RouterEvent, RouterOutlet} from '@angular/router';
 import { animate, keyframes, state, style, transition, trigger } from "@angular/animations";
 import { Item } from './item';
 import { ItemsService } from './services/items.service';
@@ -51,6 +51,7 @@ export class AppComponent {
   get items() {
     return this.itemsService.items;
   }
+
 
 
   onClick() {

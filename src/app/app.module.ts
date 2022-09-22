@@ -27,8 +27,8 @@ import { ClickOutsideModule } from 'ng-click-outside';
     ReactiveFormsModule,
     NgxsModule.forRoot([]),
     RouterModule.forRoot([
-      {path: 'add', component: CreateModalComponent, data: {tag: 'a'}},
-      {path: 'edit/:id', component: EditModalComponent, data: {tag: 'b'}},
+      {path: 'add', component: CreateModalComponent},
+      {path: 'edit/:id', component: EditModalComponent},
     ]),
     ClickOutsideModule,
   ],

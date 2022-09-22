@@ -31,10 +31,9 @@ a, a:hover, a:focus, a:active {
     display: flex;
     justify-content: center;
     width: 100%;
-    position: absolute;
+    position: relative;
     z-index: 1;
-    left: 0em;
-    bottom: -10em;
+    left: 0;
     bottom: 0.5em;
     // box-shadow: inset 1px 1px 43px 6px rgba(0,0,0,0.66);
   }
