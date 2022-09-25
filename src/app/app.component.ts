@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {NavigationEnd, NavigationStart, Router, RouterEvent, RouterOutlet} from '@angular/router';
-import { animate, keyframes, state, style, transition, trigger } from "@angular/animations";
+import {animate, AnimationEvent, keyframes, state, style, transition, trigger} from "@angular/animations";
 import { Item } from './item';
 import { ItemsService } from './services/items.service';
 import { modalAnimation } from './animations';
@@ -42,6 +42,7 @@ export class AppComponent {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         this.modal = !this.modal
+        console.log(this.modal, 'modal log')
       }
     })
   }
@@ -52,7 +53,9 @@ export class AppComponent {
     return this.itemsService.items;
   }
 
-
+  animate(e: AnimationEvent) :void {
+    console.log(e, 'e log')
+  }
 
   onClick() {
     if (this.router.url === '') {
