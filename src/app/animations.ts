@@ -1,4 +1,4 @@
-import {animate, animateChild, group, query, style, transition, trigger} from "@angular/animations";
+import {animate, query, style, transition, trigger} from "@angular/animations";
 
 export const modalAnimation = trigger('routeAnimations', [
   transition('* <=> *', [
@@ -12,11 +12,11 @@ export const modalAnimation = trigger('routeAnimations', [
       }),
     ], {optional: true}),
       query(':enter', [
-      animate('6000ms ease', style({ opacity: 1, transform: 'scale(1) translateY(0)' })),
+      animate('600ms ease', style({ opacity: 1, transform: 'scale(1) translateY(0)' })),
     ],{optional: true}),
       query(':leave',
         [style({ opacity: 1, transform: 'scale(1) translateY(0)' }),
-          animate('6000ms ease', style({ position: 'absolute',
+          animate('600ms ease', style({ position: 'absolute',
           left: 0,
           width: '100%',
           opacity: 0,

@@ -31,7 +31,7 @@ a, a:hover, a:focus, a:active {
     display: flex;
     justify-content: center;
     width: 100%;
-    position: relative;
+    position: absolute;
     z-index: 1;
     left: 0;
     bottom: 0.5em;
@@ -53,19 +53,16 @@ a, a:hover, a:focus, a:active {
     flex-direction: column;
   }
 
-  .sm-text-input  {
+  input[type="text"]   {
     border-radius: 5px;
     border: 1px solid rgb(159,159,159, 0.4);
-    color: rgb(159,159,159, 0.4);
+    color: #9f9f9f;
+    font-size: 1.2em;
     height: 40px;
     width: 250px;
-    font-size: 1em;
   }
-  .sm-text-input:focus {
-    border-radius: 5px;
-    border: 1px solid rgb(159,159,159, 0.4);
-    color: rgb(159,159,159, 0.4);
-    height: 40px;
-    width: 250px;
-    font-size: 1em;
+  input[type=text]:focus {
+    outline: 1.5px solid rgb(159,159,159, 0.4);
+    color: #9f9f9f;
+    font-size: 1.2em;
   }
