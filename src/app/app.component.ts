@@ -42,7 +42,6 @@ export class AppComponent {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         this.modal = !this.modal
-        console.log(this.modal, 'modal log')
       }
     })
   }
@@ -51,10 +50,6 @@ export class AppComponent {
 
   get items() {
     return this.itemsService.items;
-  }
-
-  animate(e: AnimationEvent) :void {
-    console.log(e, 'e log')
   }
 
   onClick() {
