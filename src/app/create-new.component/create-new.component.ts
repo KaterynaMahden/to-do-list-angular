@@ -38,9 +38,9 @@ export class CreateModalComponent {
 
   addNewItem(description: string) {
    
-    this.service.add(description)
-  
     this.router.navigateByUrl('');
+
+    this.store.dispatch(this.service.add(description))
 
   }
 }

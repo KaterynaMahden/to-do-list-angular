@@ -4,6 +4,7 @@ import {animate, AnimationEvent, keyframes, state, style, transition, trigger} f
 import { Item } from './item';
 import { ItemsService } from './services/items.service';
 import { modalAnimation } from './animations';
+import { Store } from '@ngxs/store';
 
 
 @Component({
@@ -38,8 +39,11 @@ export class AppComponent {
 
   modal = false
 
-  constructor(public router: Router, private itemsService: ItemsService) {
-    this.router.events.subscribe((event) => {
+  constructor(public router: Router,
+     private itemsService: ItemsService,
+     private store: Store,) {
+
+      this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         this.modal = !this.modal
       }

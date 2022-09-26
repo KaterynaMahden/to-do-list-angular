@@ -12,6 +12,7 @@ import {EditModalComponent} from "./edit-modal.component/edit-modal.component";
 import { CreateModalComponent } from './create-new.component/create-new.component';
 import { RouterModule } from '@angular/router';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgxsModule.forRoot([]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
     RouterModule.forRoot([
       {path: 'add', component: CreateModalComponent},
       {path: 'edit/:id', component: EditModalComponent},

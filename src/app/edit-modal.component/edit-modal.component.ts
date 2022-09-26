@@ -2,6 +2,7 @@ import { trigger, state, style, transition, animate } from "@angular/animations"
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormBuilder } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Store } from "@ngxs/store";
 import { Item } from "../item";
 import { ItemsService } from "../services/items.service";
 
@@ -17,7 +18,8 @@ export class EditModalComponent implements OnInit {
     private service: ItemsService,
     private route: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private store: Store,) { }
 
 
   ngOnInit(): void {
@@ -54,17 +56,18 @@ export class EditModalComponent implements OnInit {
 
     this.item.description = description;
 
-    this.service.edit(this.item);
-
     this.router.navigateByUrl('');
+
     this.open = false
+
+    this.store.dispatch(this.service.edit(this.item));
   }
 
   remove(): void {
     if (!this.item) {
       return;
     }
-    this.service.remove(this.item)
+    this.store.dispatch((this.service.remove(this.item)));
 
     this.router.navigateByUrl('');
     this.open = false
