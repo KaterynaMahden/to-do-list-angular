@@ -1,49 +1,51 @@
-import { Injectable } from "@angular/core";
-import { Action, createSelector, State, StateContext, Store } from "@ngxs/store";
 import { Item } from "../item";
+import { State, Action, StateContext, Selector } from '@ngxs/store';
+import {CreateItem, DeleteItem, EditItem} from "../actions/app.action";
 
-
-export interface ItemsStateModel {
-    modal: boolean;
+export class ItemStateModel {
+  items: Item[];
 }
 
-export class AllItems {
-    static readonly type = '[Items] AllItems';
-    constructor(public itemsState: ItemsStateModel,
-        private store: Store,
-        ) {}
+// Section 3
+@State<ItemStateModel>({
+  name: 'items',
+  defaults: {
+    items: [
+      { description: '1to do', done: true, id: 0 },
+      { description: '2to do', done: false, id: 1 },
+      { description: '3to do', done: false, id: 2 },
+      { description: '4to do', done: false, id: 3 },
+    ]
+  }
+})
+
+export class ItemState {
+
+  @Selector()
+  static getTutorials(state: ItemStateModel) {
+    return state.items
+  }
+
+  @Action(CreateItem)
+  add({getState, patchState }: StateContext<ItemStateModel>, { payload }:CreateItem) {
+    const state = getState();
+    patchState({
+      items: [...state.items, payload]
+    })
+  }
+
+  @Action(DeleteItem)
+  remove({getState, patchState }: StateContext<ItemStateModel>, { payload }:DeleteItem) {
+    patchState({
+      items: getState().items.filter(a => a.description != payload)
+    })
+  }
+
+  @Action(EditItem)
+  edit({getState, patchState }: StateContext<ItemStateModel>, { payload }:EditItem) {
+    patchState({
+      items: getState().items.filter(a => a.description)
+    })
+  }
+
 }
-
-// @State<string[]>({
-//     name: 'items',
-//     defaults: { 
-//         itemsAll: []
-//     }
-// })
-
-@Injectable()
-// export class ItemsState {
-
-//     @Action(AllItems) 
-//     allItems(ctx: StateContext<ItemsStateModel>, action: AllItems){
-//         const state = ctx.getState();
-//         ctx.setState({
-//             ...state,
-//             itemsAll: [
-//                 ...state.items,
-//                 action.itemsState
-//             ]
-//         })
-//     }
-    
-// }
-
-export class ItemsState {
-    static getItems(item: Item) {
-        return createSelector(
-            [ItemsState],
-            (items:Item[]) => items.filter(item => item.id === item)
-        )
-    }
-}
-
