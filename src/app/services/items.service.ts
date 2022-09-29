@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import { Store } from "@ngxs/store";
-import { of } from "rxjs";
+import { Observable, of } from "rxjs";
 import { CreateItem, DeleteItem, EditItem } from "../actions/app.action";
 import {Item} from "../item";
 
@@ -27,9 +27,9 @@ export class ItemsService {
     this.store.dispatch(new CreateItem(newItem))
   }
 
-  getItem(id: number) {
-    const item = this.items.find(item=>item.id === id)!;
-    return of(item)
+  getItem(id: number): Observable<Item> {
+    const item = this.items.find((item: { id: number; })=>item.id === id);
+    return(item)
   }
 
   edit(item: Item){

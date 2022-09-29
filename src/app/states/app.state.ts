@@ -4,7 +4,7 @@ import {CreateItem, DeleteItem, EditItem} from "../actions/app.action";
 import { Observable } from "rxjs";
 
 export class ItemStateModel {
-  items: Item[];
+  items: Item[] = [];
 }
 
 
@@ -49,7 +49,7 @@ export class ItemState {
   @Action(DeleteItem)
   remove({getState, patchState }: StateContext<ItemStateModel>, { payload }:DeleteItem) {
     patchState({
-      items: getState().items.filter(item => item.id != payload)
+      items: getState().items.filter(item => item != payload)
     })
   }
 

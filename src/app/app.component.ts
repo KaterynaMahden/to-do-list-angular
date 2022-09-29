@@ -42,7 +42,8 @@ export class AppComponent {
 
   modal = false
 
-  constructor(public router: Router,
+  constructor(
+    public router: Router,
      private itemsService: ItemsService,
      private store: Store,) {
 
@@ -53,7 +54,7 @@ export class AppComponent {
     })
   }
 
-  @Select(ItemState.getItems)items$: Observable<Item[]>;
+  @Select(ItemState.getItems)items$?: Observable<Item[]>;
   
   @Input() item?: Item | null;
 
