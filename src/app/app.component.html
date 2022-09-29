@@ -5,12 +5,13 @@
     <div class="heading-main">
       <div class="heading">
         <app-date-component></app-date-component>
-        <div class="h3">{{items.length}} <div *ngIf="items.length === 1; else elseBlock">task</div>
+        <div class="h3">{{items$}}
+           <!-- <div *ngIf="items$.length === 1; else elseBlock">task</div> -->
           <ng-template #elseBlock>tasks</ng-template></div>
       </div>
     </div>
     <div class="list">
-      <li *ngFor="let item of items">
+      <li *ngFor="let item of items$ |async">
         <app-item  [item]="item"></app-item>
       </li>
     </div>

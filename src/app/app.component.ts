@@ -4,7 +4,9 @@ import {animate, AnimationEvent, keyframes, state, style, transition, trigger} f
 import { Item } from './item';
 import { ItemsService } from './services/items.service';
 import { modalAnimation } from './animations';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
+import { ItemState } from './states/app.state';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -37,6 +39,7 @@ import { Store } from '@ngxs/store';
 
 export class AppComponent {
 
+
   modal = false
 
   constructor(public router: Router,
@@ -50,11 +53,13 @@ export class AppComponent {
     })
   }
 
+  @Select(ItemState.getItems)items$: Observable<Item[]>;
+  
   @Input() item?: Item | null;
 
-  get items() {
-    return this.itemsService.items;
-  }
+  // get items() {
+  //   return this.itemsService.items;
+  // }
 
   onClick() {
     if (this.router.url === '') {
