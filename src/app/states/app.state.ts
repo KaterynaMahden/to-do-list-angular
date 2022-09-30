@@ -1,7 +1,8 @@
 import { Item } from "../item";
 import { State, Action, StateContext, Selector, Select } from '@ngxs/store';
 import {CreateItem, DeleteItem, EditItem} from "../actions/app.action";
-import { Observable } from "rxjs";
+import produce from "immer";
+
 
 export class ItemStateModel {
   items: Item[] = [];
@@ -39,12 +40,13 @@ export class ItemState {
 
 
   @Action(CreateItem)
-  add({getState, patchState }: StateContext<ItemStateModel>, { payload }:CreateItem) {
-    const state = getState();
+  add(ctx: StateContext<ItemStateModel>, action:CreateItem) {
+   const state = getState();
     patchState({
       items: [...state.items, payload]
     })
   }
+    
 
   @Action(DeleteItem)
   remove({getState, patchState }: StateContext<ItemStateModel>, { payload }:DeleteItem) {
@@ -61,3 +63,5 @@ export class ItemState {
   }
 
 }
+
+

@@ -23,6 +23,7 @@
     "@angular/router": "^14.1.0",
     "@ngxs/store": "^3.7.5",
     "bootstrap": "^5.2.0",
+    "immer": "^9.0.15",
     "ng-click-outside": "^9.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
