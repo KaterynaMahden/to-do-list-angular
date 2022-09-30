@@ -11,7 +11,7 @@ export class ItemsService {
   constructor(public store: Store) {}
 
 
-  items = this.store.select(state => state.items.items)
+  // items = this.store.select(state => state.items.items)
 
   add(description: string){
     const id = Math.floor((Math.random() * 100) + 1);
@@ -27,8 +27,12 @@ export class ItemsService {
     this.store.dispatch(new CreateItem(newItem))
   }
 
-  getItem(id: number): Observable<Item> {
-    const item = this.items.find((item: { id: number; })=>item.id === id);
+  getItems(): Observable<Item[]> {
+    return this.store.select(state => state.items.items)
+  }
+
+  getItem(id: number): Observable<Item[]> {
+    const item = this.getItems().find((item: { id: number; })=>item.id === id);
     return(item)
   }
 
