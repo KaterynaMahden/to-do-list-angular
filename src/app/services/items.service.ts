@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import { Select, Store } from "@ngxs/store";
 import { map, Observable, of } from "rxjs";
-import { CreateItem, DeleteItem, EditItem } from "../actions/app.action";
+import {CreateItem, DeleteItem, EditItem, GetAllItems} from "../actions/app.action";
 import {Item} from "../item";
 import { ItemState } from "../states/app.state";
 
@@ -9,12 +9,10 @@ import { ItemState } from "../states/app.state";
 @Injectable()
 export class ItemsService {
 
-  constructor(public store: Store) {}
-
   @Select(ItemState.getItems)items$?: Observable<Item[]>;
-
-
-  items = this.store.select(state => state.items.items)
+  constructor(public store: Store) {
+    this.store.dispatch(new GetAllItems());
+  }
 
   add(description: string){
     const id = Math.floor((Math.random() * 100) + 1);

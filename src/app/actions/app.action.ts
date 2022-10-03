@@ -13,7 +13,7 @@ export class GetAllItems {
 export class DeleteItem {
   static readonly type = '[ITEM] Remove'
 
-  constructor(public payload: Item ){}
+  constructor(public item: Item ){}
 }
 
 export class EditItem {
@@ -22,8 +22,8 @@ export class EditItem {
   constructor(public payload: Item ){}
 }
 
-export class Done {
-  static readonly type = '[ITEM] Done'
-
-  constructor(public payload: Item ){}
-}
+// export class Done {
+//   static readonly type = '[ITEM] Done'
+//
+//   constructor(public payload: Item ){}
+// }

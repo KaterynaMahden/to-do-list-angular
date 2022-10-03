@@ -5,18 +5,33 @@ import {patch, updateItem} from "@ngxs/store/operators";
 
 
 export class ItemStateModel {
-  items: Item[] = [];
+  items: Item[];
 }
 
 
 @State<ItemStateModel>({
-  name: 'items',
+  name: 'item',
   defaults: {
     items: []
   }
 })
 
 export class ItemState {
+
+  items=[
+    {
+      description: 'to do',
+      done: false,
+      id: 1},
+    {
+      description: 'to do2',
+      done: false,
+      id: 2},
+    {
+      description: 'to do3',
+      done: false,
+      id: 3},
+  ]
 
   @Selector()
   static getItems(state: ItemStateModel) {
@@ -40,9 +55,9 @@ export class ItemState {
   }
 
   @Action(DeleteItem)
-  remove({getState, setState }: StateContext<ItemStateModel>, { payload }:DeleteItem) {
+  remove({getState, setState }: StateContext<ItemStateModel>, { item }:DeleteItem) {
     const state = getState();
-    const filteredArray = state.items.filter(item => item.id !== id);
+    const filteredArray = state.items.filter(item => item !== item);
     setState({
       ...state,
       items: filteredArray
@@ -54,7 +69,7 @@ export class ItemState {
   edit(ctx: StateContext<ItemStateModel>, { payload }: EditItem) {
     ctx.setState(
       patch({
-        items: updateItem(item=> item.id === payload.id, patch({ description: payload.description }))
+        items: updateItem(item=> item.description === payload.description, patch({ description: payload.description }))
       })
     );
   }
