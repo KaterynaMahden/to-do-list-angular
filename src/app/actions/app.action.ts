@@ -6,6 +6,10 @@ export class CreateItem {
     constructor(public payload: Item){}
 }
 
+export class GetAllItems {
+  static readonly type = '[Main Page] GetAllItems';
+}
+
 export class DeleteItem {
   static readonly type = '[ITEM] Remove'
 
