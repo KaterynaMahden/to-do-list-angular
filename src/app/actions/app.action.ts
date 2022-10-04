@@ -21,9 +21,3 @@ export class EditItem {
 
   constructor(public payload: Item ){}
 }
-
-// export class Done {
-//   static readonly type = '[ITEM] Done'
-//
-//   constructor(public payload: Item ){}
-// }

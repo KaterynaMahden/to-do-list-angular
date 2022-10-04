@@ -1,13 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {NavigationEnd, NavigationStart, Router, RouterEvent, RouterOutlet} from '@angular/router';
-import {animate, AnimationEvent, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {NavigationStart, Router} from '@angular/router';
+import {animate, state, style, transition, trigger} from "@angular/animations";
 import { Item } from './item';
 import { ItemsService } from './services/items.service';
 import { modalAnimation } from './animations';
-import { Select, Store } from '@ngxs/store';
-import { ItemState } from './states/app.state';
 import { Observable } from 'rxjs';
-import { GetAllItems } from './actions/app.action';
+
 
 
 @Component({
@@ -69,10 +67,6 @@ export class AppComponent implements OnInit {
     )
   }
  
-
-  // get items() {
-  //   return this.itemsService.getItems();
-  // }
 
   onClick() {
     if (this.router.url === '') {

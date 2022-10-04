@@ -61,7 +61,6 @@ export class ItemState {
   @Action(DeleteItem)
   remove({getState, setState }: StateContext<ItemStateModel>, { payload }:DeleteItem) {
     const state = getState();
-    const filteredArray = state.items.filter(item => item !== item);
     setState({
       ...state,
       items: state.items.filter(i => i !== payload)

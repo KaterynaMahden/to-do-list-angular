@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { ItemState } from './states/app.state';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ItemState } from './states/app.state';
     ReactiveFormsModule,
     NgxsModule.forRoot([ItemState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsStoragePluginModule.forRoot(), 
     RouterModule.forRoot([
       {path: 'add', component: CreateModalComponent},
       {path: 'edit/:id', component: EditModalComponent},

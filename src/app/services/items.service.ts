@@ -23,8 +23,6 @@ export class ItemsService {
       id: id
     }
 
-    // this.items.unshift(newItem);
-
     this.store.dispatch(new CreateItem(newItem))
   }
 
@@ -37,23 +35,10 @@ export class ItemsService {
   }
 
   edit(item: Item){
-    // const itemIndex = this.items.indexOf(item);
-    // if (itemIndex < 0) {
-    //   throw new Error('Item not found');
-    // }
-
-    // this.items[itemIndex] = item;
-
     this.store.dispatch(new EditItem(item))
   }
 
   remove(item: Item) {
-    // const itemIndex = this.items.indexOf(item)
-    // if (itemIndex < 0) {
-    //   throw new Error('Item not found');
-    // }
-    // this.items.splice(this.items.indexOf(item), 1)
-
     this.store.dispatch(new DeleteItem(item))
   }
 }
