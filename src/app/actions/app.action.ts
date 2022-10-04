@@ -7,13 +7,13 @@ export class CreateItem {
 }
 
 export class GetAllItems {
-  static readonly type = '[Main Page] GetAllItems';
+  static readonly type = '[ITEM] GetAllItems';
 }
 
 export class DeleteItem {
   static readonly type = '[ITEM] Remove'
 
-  constructor(public item: Item ){}
+  constructor(public payload: Item ){}
 }
 
 export class EditItem {

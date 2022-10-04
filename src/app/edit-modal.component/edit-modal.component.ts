@@ -60,14 +60,14 @@ export class EditModalComponent implements OnInit {
 
     this.open = false
 
-    this.store.dispatch(this.service.edit(this.item));
+   this.service.edit(this.item);
   }
 
   remove(): void {
     if (!this.item) {
       return;
     }
-    this.store.dispatch((this.service.remove(this.item)));
+    this.service.remove(this.item);
 
     this.router.navigateByUrl('');
     this.open = false

@@ -13,6 +13,7 @@ import { CreateModalComponent } from './create-new.component/create-new.componen
 import { RouterModule } from '@angular/router';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { ItemState } from './states/app.state';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    NgxsModule.forRoot([]),
+    NgxsModule.forRoot([ItemState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     RouterModule.forRoot([
       {path: 'add', component: CreateModalComponent},

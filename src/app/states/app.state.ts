@@ -2,10 +2,11 @@ import { Item } from "../item";
 import { State, Action, StateContext, Selector, Select } from '@ngxs/store';
 import {CreateItem, DeleteItem, EditItem, GetAllItems} from "../actions/app.action";
 import {patch, updateItem} from "@ngxs/store/operators";
+import { Injectable } from "@angular/core";
 
 
 export class ItemStateModel {
-  items: Item[];
+  items!: Item[];
 }
 
 
@@ -15,7 +16,7 @@ export class ItemStateModel {
     items: []
   }
 })
-
+@Injectable()
 export class ItemState {
 
   items=[
@@ -46,21 +47,24 @@ export class ItemState {
   }
 
   @Action(CreateItem)
-  add(ctx:  StateContext<ItemStateModel>) {
+  add(ctx:  StateContext<ItemStateModel>, {payload}: CreateItem) {
     const state = ctx.getState();
     ctx.setState({
       ...state,
-      items: []
+      items: [
+        ...state.items,
+        payload
+      ]
     });
   }
 
   @Action(DeleteItem)
-  remove({getState, setState }: StateContext<ItemStateModel>, { item }:DeleteItem) {
+  remove({getState, setState }: StateContext<ItemStateModel>, { payload }:DeleteItem) {
     const state = getState();
     const filteredArray = state.items.filter(item => item !== item);
     setState({
       ...state,
-      items: filteredArray
+      items: state.items.filter(i => i !== payload)
     });
   }
 
@@ -69,7 +73,7 @@ export class ItemState {
   edit(ctx: StateContext<ItemStateModel>, { payload }: EditItem) {
     ctx.setState(
       patch({
-        items: updateItem(item=> item.description === payload.description, patch({ description: payload.description }))
+        items: updateItem<Item>(item => item?.description === payload.description, patch({ description: payload.description }))
       })
     );
   }

@@ -7,6 +7,7 @@ import { modalAnimation } from './animations';
 import { Select, Store } from '@ngxs/store';
 import { ItemState } from './states/app.state';
 import { Observable } from 'rxjs';
+import { GetAllItems } from './actions/app.action';
 
 
 @Component({
@@ -37,15 +38,20 @@ import { Observable } from 'rxjs';
   ]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
+ 
+  @Input() item?: Item | null;
+
+  items: Item[] | undefined;
 
   modal = false
+  
+  items$?: Observable<Item[]>;
 
   constructor(
     public router: Router,
-     private itemsService: ItemsService,
-     private store: Store,) {
+     private itemsService: ItemsService) {
 
       this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
@@ -53,13 +59,19 @@ export class AppComponent {
       }
     })
   }
-
-  @Select(ItemState.getItems)items$?: Observable<Item[]>;
   
-  @Input() item?: Item | null;
+  
+  ngOnInit(): void {
+    this.items$ = this.itemsService.getItems();
+    this.items$?.subscribe(i=>{
+      this.items = i;
+    }
+    )
+  }
+ 
 
   // get items() {
-  //   return this.itemsService.items;
+  //   return this.itemsService.getItems();
   // }
 
   onClick() {

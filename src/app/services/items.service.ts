@@ -9,7 +9,7 @@ import { ItemState } from "../states/app.state";
 @Injectable()
 export class ItemsService {
 
-  @Select(ItemState.getItems)items$?: Observable<Item[]>;
+  @Select(ItemState.getItems)items$!: Observable<Item[]>;
   constructor(public store: Store) {
     this.store.dispatch(new GetAllItems());
   }
@@ -29,7 +29,7 @@ export class ItemsService {
   }
 
   getItems(): Observable<Item[]> {
-    return this.store.select(state => state.items.items)
+    return this.items$; 
   }
 
   getItem(id: number): Observable<Item | undefined> {

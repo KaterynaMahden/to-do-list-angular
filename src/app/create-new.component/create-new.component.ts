@@ -40,7 +40,7 @@ export class CreateModalComponent {
    
     this.router.navigateByUrl('');
 
-    this.store.dispatch(this.service.add(description))
+    this.service.add(description)
 
   }
 }
